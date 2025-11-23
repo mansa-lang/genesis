@@ -46,7 +46,7 @@ def main():
     parser = build_argparser()
     args = parser.parse_args()
 
-    if not getattr(args, "command", None) is None:
+    if getattr(args, "command", None) is not None:
         if args.command == "help" or args.command is None:
             parser.print_help()
             return 0
