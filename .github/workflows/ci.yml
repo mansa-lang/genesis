@@ -1,0 +1,44 @@
+name: Mansa CI
+on:
+  push:
+    branches: [develop,main]
+  pull_request:
+    branches: [develop,main]
+jobs:
+  tests-and-lint:
+    name: Tests and Lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+      - name: Set up Python environment
+        run: |
+          uv venv .venv
+          echo ".venv/bin" >> $GITHUB_PATH
+
+      - name: Install dependencies
+        run: uv sync --dev --all-extras
+
+      - name: Run linter & Formatter check
+        run: |
+          ruff check .
+          ruff format --check .
+
+      - name: Run tests
+        run: uv run pytest
+
+      - name: Mansa Genesis check
+        run: |
+          ./scripts/setup.sh
+          mansa --version
+
+      - name: Victory banner
+        run: |
+          echo "All CI checks passed! The empire stands strong!"
