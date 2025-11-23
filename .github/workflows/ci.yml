@@ -1,4 +1,4 @@
-name: Mansa CI
+name: Mansa Genesis CI
 on:
   push:
     branches: [develop,main]
