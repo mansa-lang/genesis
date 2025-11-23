@@ -14,6 +14,7 @@
 
 from . import __version__
 
+
 def build_argparser():
     import argparse
 
@@ -41,6 +42,7 @@ def build_argparser():
     )
 
     return parser
+
 
 def main():
     parser = build_argparser()
