@@ -21,18 +21,40 @@ def build_argparser():
         prog="mansa",
         description="Mansa: Building the PERFECT systems language.",
         epilog=": Embryonic Bootstrapper for Building the PERFECT systems language.",
+        add_help=False,
     )
 
     parser.add_argument(
+        "-V",
         "--version",
         action="version",
         version=f"Mansa Genesis {__version__}",
+        help="Show the version number and exit.",
+    )
+
+    parser.add_argument(
+        "-h",
+        "--help",
+        action="help",
+        default=argparse.SUPPRESS,
+        help="Show this help message and exit.",
     )
 
     return parser
 
 def main():
-    args = build_argparser().parse_args()
-    
-    print("Commands not implemented yet. Empire still rising.")
-    return 1
+    parser = build_argparser()
+    args = parser.parse_args()
+
+    if not getattr(args, "command", None) is None:
+        if args.command == "help" or args.command is None:
+            parser.print_help()
+            return 0
+
+        if args.command:
+            print(f"Command: '{args.command}' not yet implemented.")
+            print("Empire still rising. Patience, citizen.")
+            return 1
+
+    parser.print_help()
+    return 0

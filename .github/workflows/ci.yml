@@ -37,7 +37,10 @@ jobs:
       - name: Mansa Genesis check
         run: |
           ./scripts/setup.sh
+          mansa -V
           mansa --version
+          mansa -h
+          mansa --help
 
       - name: Victory banner
         run: |
