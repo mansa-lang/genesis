@@ -22,6 +22,7 @@ Deliver a bootstrapper capable of compiling the real Mansa toolchain, the one th
 - [Issue #1: From Hatched Prototype to Mansa: Building the PERFECT systems language](https://github.com/mansa-lang/genesis/issues/1)
 - [Issue #2: Deleted Duplicate of #3](https://github.com/mansa-lang/genesis/issues/3)
 - [Issue #3: PERFECT: Defining the Seven Unbreakable Promises](https://github.com/mansa-lang/genesis/issues/3)
+- [Issue #4: Repository Design & Bootstrap Workflow for Mansa Genesis](https://github.com/mansa-lang/genesis/issues/4)
 
 ## Author & Sovereign
 
