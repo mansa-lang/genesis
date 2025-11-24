@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-Unit tests for the foundational scanner types:
+Unit tests for the foundational token types:
 - Span
 - TokenKind
 - Token
