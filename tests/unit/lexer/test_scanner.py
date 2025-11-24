@@ -23,7 +23,7 @@ They must be 100% correct, fast, and memory-efficient.
 """
 
 import pytest
-from mansa.lexer.scanner import Span, TokenKind, Token
+from mansa.lexer.token import Span, TokenKind, Token
 
 
 # ----
