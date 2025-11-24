@@ -2,12 +2,18 @@
 
 > **The stage-0 bootstrapper that will birth the self-hosted Mansa Toolchain**
 
-[![Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-ff4d4d.svg)](https://opensource.org/licenses/Apache-2.0)
-[![PERFECT Vision](https://img.shields.io/badge/vision-PERFECT-0e8a16.svg)](https://github.com/mansa-lang/mansa/issues/3)
-
 This repository is **Genesis**; the fast, pragmatic Python prototype whose sole purpose is to compile the **true**, self-hosted Mansa compiler as quickly and correctly as possible.
 
 When Mansa compiles itself, this repository will be archived in eternal honor, and the empire will stand sovereign.
+
+## Empire Status
+
+| Check | Status | Meaning |
+|-------|--------|---------|
+| PERFECT Vision | [![Vision: PERFECT](https://img.shields.io/badge/vision-PERFECT-0e8a16.svg)](https://github.com/mansa-lang/mansa/issues/3) | The seven unbreakable promises |
+| License | [![License](https://img.shields.io/badge/License-Apache_2.0-ff4d4d.svg?logo=apache)](https://opensource.org/licenses/Apache-2.0) | Free for all |
+| `develop` CI | [![CI (develop)](https://github.com/mansa-lang/genesis/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/mansa-lang/genesis/actions/workflows/ci.yml?query=branch%3Adevelop) | The forge is active |
+| `main` CI | [![CI (main)](https://github.com/mansa-lang/genesis/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/mansa-lang/genesis/actions/workflows/ci.yml?query=branch%3Amain) | The throne is stable |
 
 ## The Mission
 
