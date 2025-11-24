@@ -102,6 +102,47 @@ def test_char_stream_non_string_source():
         CharStream(123)  # type: ignore
 
 
+def test_char_stream_eof():
+    source = "abc"
+    stream = CharStream(source)
+
+    # Advance to the end
+    for _ in range(len(source)):
+        stream.advance()
+
+    # Next advance should return EOF
+    eof_result = stream.advance()
+    assert eof_result is None
+
+    # Peek at EOF
+    idx, ch, pos = stream.peek()
+    assert idx == len(source)
+    assert ch == "\0"
+    assert pos == Position(len(source), len(source), stream.line, stream.column)
+
+
+def test_char_stream_substring():
+    source = "Hello, World!"
+    stream = CharStream(source)
+
+    substring = stream.sub(7, 12)
+    assert substring == "World"
+
+
+def test_char_stream_substring_out_of_bounds():
+    source = "Hello"
+    stream = CharStream(source)
+
+    with pytest.raises(IndexError):
+        stream.sub(-1, 3)
+
+    with pytest.raises(IndexError):
+        stream.sub(2, 10)
+
+    with pytest.raises(IndexError):
+        stream.sub(4, 2)
+
+
 # ----
 # Position Tests
 # ----
@@ -140,3 +181,17 @@ def test_position_repr():
     assert "end=20" in repr_str
     assert "line=3" in repr_str
     assert "column=5" in repr_str
+
+
+def test_position_invalid_values():
+    with pytest.raises(ValueError):
+        Position(start=-1, end=5, line=1, column=1)
+
+    with pytest.raises(ValueError):
+        Position(start=5, end=3, line=1, column=1)
+
+    with pytest.raises(ValueError):
+        Position(start=0, end=5, line=0, column=1)
+
+    with pytest.raises(ValueError):
+        Position(start=0, end=5, line=1, column=0)

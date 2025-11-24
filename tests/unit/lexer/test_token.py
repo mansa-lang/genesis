@@ -148,5 +148,17 @@ def test_token_can_be_used_in_sets():
     assert t3 in token_set
 
 
+def test_token_static_methods():
+    span = Span(0, 0, 1, 1)
+    eof_token = Token.eof(span)
+    illegal_token = Token.illegal(span)
+
+    assert eof_token.kind == TokenKind.EOF
+    assert eof_token.span == span
+
+    assert illegal_token.kind == TokenKind.ILLEGAL
+    assert illegal_token.span == span
+
+
 if __name__ == "__main__":
     pytest.main(["-v", __file__])

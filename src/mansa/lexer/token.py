@@ -41,3 +41,13 @@ class Token:
 
     kind: TokenKind
     span: Span
+
+    @staticmethod
+    def eof(span: Span) -> "Token":
+        """Create an EOF token."""
+        return Token(TokenKind.EOF, span)
+
+    @staticmethod
+    def illegal(span: Span) -> "Token":
+        """Create an ILLEGAL token."""
+        return Token(TokenKind.ILLEGAL, span)
