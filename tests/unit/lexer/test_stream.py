@@ -46,7 +46,7 @@ def test_char_stream_empty():
     source = ""
     stream = CharStream(source)
 
-    assert list(stream) == []
+    assert list(stream) == [(0, "\0", Position(0, 0, 1, 1))]
 
 
 def test_char_stream_single_line():

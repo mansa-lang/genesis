@@ -51,3 +51,5 @@ class CharStream:
                 col = 1
             else:
                 col += 1
+        # EOF character
+        yield len(self.source), "\0", Position(len(self.source), len(self.source), line, col)
