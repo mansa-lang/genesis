@@ -6,9 +6,9 @@ on:
     branches: [develop,main]
 jobs:
   tests-and-lint:
-    name: Tests and Lint
+    name: Tests, Lint, and Type Check
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -26,13 +26,18 @@ jobs:
       - name: Install dependencies
         run: uv sync --dev --all-extras
 
-      - name: Run linter & Formatter check
+      - name: Run ruff linter & formatter check
         run: |
-          ruff check .
-          ruff format --check .
+          ruff check ./src ./tests
+          ruff format --check ./src ./tests
+
+      - name: Run mypy (strict type checking)
+        run: mypy src/ tests/ --show-error-codes --pretty
 
       - name: Run tests
-        run: uv run pytest
+        run: |
+          uv run pytest -n auto --cov=src/mansa --cov-report=xml \
+          --cov-report=term-missing --cov-fail-under=50
 
       - name: Mansa Genesis check
         run: |

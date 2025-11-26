@@ -19,7 +19,7 @@ These are essential for accurate lexing and error reporting.
 """
 
 import pytest
-from mansa.lexer.stream import CharStream, Position
+from mansa.lexer.stream import CharStream, EOF as StreamEOF, Position
 
 
 # ----
@@ -111,8 +111,11 @@ def test_char_stream_eof():
         stream.advance()
 
     # Next advance should return EOF
-    eof_result = stream.advance()
-    assert eof_result is None
+    _, eof_result, pos = stream.advance()
+    assert eof_result is StreamEOF
+    assert pos.start == pos.end
+    assert pos.line == 1
+    assert pos.column == 4
 
     # Peek at EOF
     idx, ch, pos = stream.peek()
@@ -169,7 +172,7 @@ def test_position_immutability():
     pos = Position(start=0, end=1, line=1, column=1)
 
     with pytest.raises(AttributeError):
-        pos.start = 5  # frozen!
+        pos.start = 5  # type: ignore
 
 
 def test_position_repr():

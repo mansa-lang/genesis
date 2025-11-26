@@ -12,12 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import argparse
 from . import __version__
 
 
-def build_argparser():
-    import argparse
-
+def build_argparser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="mansa",
         description="Mansa: Building the PERFECT systems language.",
@@ -44,19 +43,18 @@ def build_argparser():
     return parser
 
 
-def main():
+def main() -> int:
     parser = build_argparser()
-    args = parser.parse_args()
+    args, argv = parser.parse_known_args()
 
+    if argv:
+        print(f"Command: '{argv[0]}' not yet implemented.")
+        print("Empire still rising. Patience, citizen.")
+        return 1
     if getattr(args, "command", None) is not None:
         if args.command == "help" or args.command is None:
             parser.print_help()
             return 0
 
-        if args.command:
-            print(f"Command: '{args.command}' not yet implemented.")
-            print("Empire still rising. Patience, citizen.")
-            return 1
-
     parser.print_help()
-    return 0
+    return 1

@@ -19,5 +19,24 @@ build-backend = "hatchling.build"
 dev = [
     "mypy>=1.18.2",
     "pytest>=9.0.1",
+    "pytest-cov>=7.0.0",
+    "pytest-xdist>=3.8.0",
     "ruff>=0.14.6",
 ]
+
+[tool.mypy]
+strict = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_return_any = true
+warn_unreachable = true
+show_error_codes = true
+pretty = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false

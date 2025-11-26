@@ -37,7 +37,7 @@ class Position:
     line: int
     column: int
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         if self.start < 0 or self.end < self.start:
             raise ERR_INVALID_POSITION_RANGE
         if self.line < 1 or self.column < 1:
@@ -66,16 +66,16 @@ class CharStream:
         object.__setattr__(self, "column", 1)
         self.__post_init__()
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         if not isinstance(self.source, str):
             raise ERR_INVALID_SOURCE_TYPE
 
-    def advance(self) -> tuple[int, str, Position] | None:
+    def advance(self) -> tuple[int, str, Position]:
         """Advance to the next character and return it with its position."""
         idx, ch, pos = self.peek()
-        if ch == EOF:
-            return None
-        object.__setattr__(self, "current_index", self.current_index + 1)
+        if ch != EOF:
+            object.__setattr__(self, "current_index", self.current_index + 1)
+
         if ch == "\n":
             object.__setattr__(self, "line", self.line + 1)
             object.__setattr__(self, "column", 1)

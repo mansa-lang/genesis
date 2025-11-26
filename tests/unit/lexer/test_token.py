@@ -58,7 +58,7 @@ def test_span_immutable():
     span = Span(0, 5, 1, 1)
 
     try:
-        span.start = 10
+        span.start = 10 # type: ignore
         assert False, "Span should be immutable"
     except AttributeError:
         pass
@@ -86,7 +86,7 @@ def test_tokenkind_membership_and_values():
 def test_tokenkind_is_strenum():
     assert isinstance(TokenKind.EOF, str)
     assert issubclass(TokenKind, str)
-    assert TokenKind.EOF == "eof"
+    assert str(TokenKind.EOF) == "eof"
 
 
 def test_tokenkind_values_are_unique():
@@ -118,7 +118,7 @@ def test_token_is_frozen_and_hashable():
     assert hash(t1) == hash(t2)
 
     with pytest.raises(AttributeError):
-        t1.kind = TokenKind.ILLEGAL  # frozen!
+        t1.kind = TokenKind.ILLEGAL  # type: ignore
 
 
 def test_token_repr():
