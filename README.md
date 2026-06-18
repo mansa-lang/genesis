@@ -16,23 +16,25 @@ near-ASM performance, and a syntax that gets out of your way.
 Every design decision is measured against **PERFECT** — seven unbreakable
 promises the language makes to every developer who uses it.
 
-| Letter | Promise                                                |
-|--------|--------------------------------------------------------|
-| **P** | Productivity   — effortless to write and maintain       |
-| **E** | Efficiency     — zero-overhead, routinely beats C       |
-| **R** | Reliability    — memory safe, no UB in safe mode        |
-| **F** | Flexibility    — metaprogramming, multi-paradigm        |
-| **E** | Expressiveness — say more with less                     |
-| **C** | Correctness    — exhaustive types + formal verification |
-| **T** | Timeliness     — millisecond feedback, builds that fly  |
+| Letter | Promise                                                 |
+|--------|---------------------------------------------------------|
+| **P**  | Productivity   — effortless to write and maintain       |
+| **E**  | Efficiency     — zero-overhead, routinely beats C       |
+| **R**  | Reliability    — memory safe, no UB in safe mode        |
+| **F**  | Flexibility    — metaprogramming, multi-paradigm        |
+| **E**  | Expressiveness — say more with less                     |
+| **C**  | Correctness    — exhaustive types + formal verification |
+| **T**  | Timeliness     — millisecond feedback, builds that fly  |
 
-## Built with
+---
 
-- **Language:** Nil
-- **Parser:** Nil
-- **Codegen:** Nil
-- **Tests:** Nil
-- **Target:** Nil
+## Development Stack
+
+- **Language:** Python 3.14+
+- **Parser:** Lark (PEG Grammar)
+- **Codegen:** llvmlite (LLVM IR)
+- **Tests:** pytest
+- **Target:** Linux x86_64 first, then `macOS` + `Windows`
 
 ---
 
